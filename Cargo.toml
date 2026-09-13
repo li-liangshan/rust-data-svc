@@ -1,0 +1,40 @@
+[package]
+name = "rust-data-svc"
+version = "0.1.0"
+edition = "2021"
+description = "Production‑ready service for data platform (spark/livy ecosystem)"
+license = "Apache-2.0"
+
+[dependencies]
+axum = "0.7.5"
+tokio = { version = "1.39", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+figment = { version = "0.10.19", features = ["toml", "env"] }
+thiserror = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
+prometheus = "0.13"
+axum-prometheus = "0.6"
+opentelemetry = { version = "0.32", features = ["trace"] }
+opentelemetry-otlp = { version = "0.32.0", features = ["trace", "grpc-tonic", "tokio"] }
+opentelemetry_sdk = {version = "0.32.0", features=["trace", "rt-tokio"]}
+tracing-opentelemetry = "0.33"
+validator = { version = "0.18", features = ["derive"] }
+futures = "0.3"
+once_cell = "1.19"
+uuid = { version = "1.9", features = ["v4", "serde"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "timeout", "trace"] }
+utoipa = { version = "^4.2.3" } # openapi，可选
+
+[dev-dependencies]
+cargo-audit = "0.21"
+
+[profile.release]
+opt-level = 3
+debug = false
+panic = "abort"
+strip = true          # 移除调试符号，减小镜像，注意：core dump不可用，如需排查可关闭并使用separate debuginfo
+lto = true
+codegen-units = 1

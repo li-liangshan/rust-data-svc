@@ -1,0 +1,12 @@
+[server]
+service_name = "rust-data-svc"
+listen_addr = "0.0.0.0:8080"
+global_timeout_sec = 10
+max_concurrent = 200
+
+[telemetry]
+log_level = "INFO"
+prometheus_path = "/metrics"
+jaeger_endpoint = "http://127.0.0.1:4317"
+otel_sample_ratio = 0.1
+enable_jaeger = false

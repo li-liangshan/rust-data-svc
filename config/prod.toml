@@ -1,0 +1,5 @@
+[telemetry]
+log_level = "INFO"
+enable_jaeger = true
+jaeger_endpoint = "http://jaeger-collector.observability.svc.cluster.local:14268/api/traces"
+otel_sample_ratio = 0.05
