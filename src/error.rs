@@ -6,6 +6,7 @@ use serde::Serialize;
 use thiserror::Error;
 
 #[derive(Error, Debug)]
+#[allow(dead_code)]
 pub enum AppError {
     #[error("bad request: {0}")]
     BadRequest(String),
@@ -18,6 +19,7 @@ pub enum AppError {
 }
 
 #[derive(Serialize)]
+#[allow(dead_code)]
 struct ErrorResp {
     code: u16,
     msg: String,
@@ -42,4 +44,5 @@ impl IntoResponse for AppError {
     }
 }
 
+#[allow(dead_code)]
 pub type Result<T> = std::result::Result<T, AppError>;

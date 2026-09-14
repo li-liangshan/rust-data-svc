@@ -17,6 +17,7 @@ pub struct ServerConfig {
 }
 
 #[derive(Debug, Deserialize, Validate, Clone)]
+#[allow(dead_code)]
 pub struct TelemetryConfig {
     pub log_level: String,
     pub prometheus_path: String,
